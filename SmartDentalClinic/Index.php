@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Dental Clinic - Where Technology Meets Compassion</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0d6efd;
+      --secondary: #00c2e0;
+      --accent: #6f42c1;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 10% 20%, rgba(13, 110, 253, 0.05) 0%, rgba(255, 255, 255, 0) 40%),
+                  radial-gradient(circle at 90% 80%, rgba(0, 194, 224, 0.05) 0%, rgba(255, 255, 255, 0) 40%);
+      z-index: -1;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+    }
+    
+    .navbar {
+      padding: 15px 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+    }
+    
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    
+    .navbar-brand img {
+      height: 50px;
+      margin-right: 10px;
+    }
+    
+    .navbar-brand span {
+      color: var(--secondary);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 8px;
+      padding: 8px 15px !important;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: var(--gradient-primary);
+      color: white !important;
+      transform: translateY(-2px);
+    }
+    
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 20;
+      max-width: 650px;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    
+    .hero-btns .btn {
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-right: 15px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary {
+      background: var(--gradient-primary);
+      border: none;
+    }
+    
+    .btn-outline-primary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .hero-btns .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hero-image {
+      position: absolute;
+      right: -50px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      max-width: 700px;
+      z-index: 10;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 70px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    
+    .section-title p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: none;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15);
+    }
+    
+    .service-icon {
+      height: 100px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      margin: -50px auto 20px;
+      color: white;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+    }
+    
+    .service-card .card-body {
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .doctor-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s ease;
+      border: none;
+      margin-bottom: 30px;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15);
+    }
+    
+    .doctor-img {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .doctor-social {
+      position: absolute;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .doctor-card:hover .doctor-social {
+      opacity: 1;
+    }
+    
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin: 15px;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(13, 110, 253, 0.15);
+    }
+    
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 5rem;
+      color: rgba(13, 110, 253, 0.1);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .testimonial-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    
+    .stats-section {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .contact-section {
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-info {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 50px;
+      height: 100%;
+    }
+    
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+    
+    .contact-icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      min-width: 40px;
+      text-align: center;
+    }
+    
+    .contact-form {
+      padding: 50px;
+    }
+    
+    .form-control {
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid #e0e0e0;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
+    
+    .footer {
+      background: var(--dark);
+      color: white;
+      padding: 80px 0 30px;
+    }
+    
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    
+    .footer-logo span {
+      color: var(--secondary);
+    }
+    
+    .footer-links h5 {
+      color: white;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-links h5::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: #aaa;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 50px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #aaa;
+    }
+    
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    
+    .floating-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      font-size: 1.5rem;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+    }
+    
+    .btn-appointment {
+      background: var(--gradient-primary);
+    }
+    
+    .btn-chat {
+      background: var(--accent);
+    }
+    
+    .btn-call {
+      background: #28a745;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-53%) translateX(10px); }
+      100% { transform: translateY(-50%) translateX(0); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-section {
+        text-align: center;
+        padding-top: 120px;
+      }
+      
+      .hero-content {
+        margin: 0 auto;
+      }
+      
+      .hero-image {
+        position: relative;
+        width: 100%;
+        right: 0;
+        transform: none;
+        margin-top: 50px;
+      }
+      
+      .hero-title {
+        font-size: 2.8rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .section {
+        padding: 70px 0;
+      }
+      
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-title {
+        font-size: 2.3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-tooth me-2"></i>
+        Smart<span>Dental</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#doctors">Doctors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonials">Testimonials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <a href="appointment.php" class="btn btn-primary px-4 py-2 rounded-pill">
+            <i class="fas fa-calendar-check me-2"></i>Book Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="hero-content fade-in">
+            <h1 class="hero-title">Advanced Dental Care with a Gentle Touch</h1>
+            <p class="hero-subtitle">Where cutting-edge technology meets compassionate care for your perfect smile.</p>
+            <div class="hero-btns">
+              <a href="#services" class="btn btn-primary">Our Services</a>
+              <a href="appointment.php" class="btn btn-outline-primary">Book Now</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img src="?auto=format&fit=crop&w=700" alt="" class="hero-image img-fluid fade-in delay-1">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Our Dental Services</h2>
+        <p>Comprehensive dental care for the whole family using the latest technology and techniques</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4 fade-in delay-1">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tooth"></i>
+            </div>
+            <div class="card-body">
+              <h3>General Dentistry</h3>
+              <p>Comprehensive exams, cleanings, fillings, and preventive care to maintain your oral health.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 fade-in delay-2">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-teeth"></i>
+            </div>
+            <div class="card-body">
+              <h3>Cosmetic Dentistry</h3>
+              <p>Transform your smile with veneers, whitening, bonding, and other aesthetic treatments.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 fade-in delay-3">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-implant"></i>
+            </div>
+            <div class="card-body">
+              <h3>Dental Implants</h3>
+              <p>Permanent solution for missing teeth that look, feel, and function like natural teeth.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 fade-in">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-braces"></i>
+            </div>
+            <div class="card-body">
+              <h3>Orthodontics</h3>
+              <p>Traditional braces and clear aligners to straighten teeth and correct bite issues.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 fade-in delay-1">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-x-ray"></i>
+            </div>
+            <div class="card-body">
+              <h3>Digital X-Rays</h3>
+              <p>Advanced imaging with 90% less radiation for accurate diagnosis and treatment planning.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 fade-in delay-2">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-teeth-open"></i>
+            </div>
+            <div class="card-body">
+              <h3>Oral Surgery</h3>
+              <p>Expert extraction, wisdom teeth removal, and corrective jaw surgery.</p>
+              <a href="#" class="btn btn-link text-primary text-decoration-none">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="8500">0</div>
+            <div class="stat-label">Happy Patients</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="24">0</div>
+            <div class="stat-label">Expert Dentists</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="15">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="96">0</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section class="section" id="doctors">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Meet Our Dental Experts</h2>
+        <p>Our team of highly qualified dentists and specialists are dedicated to your oral health</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3 fade-in">
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500" alt="Dr. Sarah Johnson" class="doctor-img">
+            <div class="doctor-social">
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dr. Sarah Johnson</h5>
+              <p class="text-primary">Cosmetic Dentistry Specialist</p>
+              <p class="card-text">15 years of experience creating beautiful smiles with artistic precision.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in delay-1">
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500" alt="Dr. Michael Chen" class="doctor-img">
+            <div class="doctor-social">
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dr. Michael Chen</h5>
+              <p class="text-primary">Oral Surgeon</p>
+              <p class="card-text">Board-certified with expertise in complex dental implant procedures.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in delay-2">
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500" alt="Dr. Emma Rodriguez" class="doctor-img">
+            <div class="doctor-social">
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dr. Emma Rodriguez</h5>
+              <p class="text-primary">Orthodontist</p>
+              <p class="card-text">Specialized in invisible aligners and pediatric orthodontics.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in delay-3">
+          <div class="doctor-card">
+            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=500" alt="Dr. James Wilson" class="doctor-img">
+            <div class="doctor-social">
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="btn btn-sm btn-primary rounded-circle"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Dr. James Wilson</h5>
+              <p class="text-primary">Periodontist</p>
+              <p class="card-text">Expert in gum disease treatment and regenerative techniques.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="section bg-light" id="testimonials">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Patient Testimonials</h2>
+        <p>Hear what our patients have to say about their experience at Smart Dental</p>
+      </div>
+      <div class="row">
+        <div class="col-md-4 fade-in">
+          <div class="testimonial-card">
+            <p class="mb-4">"The team at Smart Dental transformed my smile completely. The Invisalign treatment was painless and the results are amazing. I couldn't be happier!"</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Maria Garcia" class="testimonial-img">
+              <div>
+                <h5 class="mb-0">Maria Garcia</h5>
+                <p class="text-muted">Invisalign Patient</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in delay-1">
+          <div class="testimonial-card">
+            <p class="mb-4">"I've been terrified of dentists my whole life, but Dr. Johnson and her team made me feel completely at ease. The sedation dentistry option was a game-changer for me."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Robert Kim" class="testimonial-img">
+              <div>
+                <h5 class="mb-0">Robert Kim</h5>
+                <p class="text-muted">Sedation Dentistry Patient</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 fade-in delay-2">
+          <div class="testimonial-card">
+            <p class="mb-4">"The dental implant procedure was seamless. From consultation to final placement, the team was professional, caring, and highly skilled. My new tooth looks completely natural."</p>
+            <div class="d-flex align-items-center">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer Lee" class="testimonial-img">
+              <div>
+                <h5 class="mb-0">Jennifer Lee</h5>
+                <p class="text-muted">Dental Implant Patient</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Contact Us</h2>
+        <p>We're here to answer your questions and schedule your appointment</p>
+      </div>
+      <div class="contact-section fade-in delay-1">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="contact-info">
+              <h3 class="mb-4">Get In Touch</h3>
+              <div class="contact-info-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h5>Our Location</h5>
+                  <p>123 Dental Avenue, Smile City, SC 12345</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone-alt"></i>
+                </div>
+                <div>
+                  <h5>Phone Number</h5>
+                  <p>+255 657 748 070</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h5>Email Address</h5>
+                  <p>Smartdentalclinic@hotmail.com</p>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                  <h5>Working Hours</h5>
+                  <p>Mon-Sat: 08:00am - 7:00pm<br>Sun: 10:00am - 4:00pm</p>
+                </div>
+              </div>
+              <div class="mt-5">
+                <h5 class="mb-3">Follow Us</h5>
+                <div class="social-links">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="contact-form">
+              <h3 class="mb-4">Send Us a Message</h3>
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Your Name">
+                  </div>
+                  <div class="col-md-6">
+                    <input type="email" class="form-control" placeholder="Your Email">
+                  </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Subject">
+                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn-primary w-100 py-3">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a href="#" class="footer-logo">
+            <i class="fas fa-tooth me-2"></i>Smart<span>Dental</span>
+          </a>
+          <p class="text-muted mb-4">Providing exceptional dental care with cutting-edge technology and a compassionate approach for over 15 years.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Quick Links</h5>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#doctors">Dentists</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <div class="footer-links">
+            <h5>Our Services</h5>
+            <ul>
+              <li><a href="#">General Dentistry</a></li>
+              <li><a href="#">Cosmetic Dentistry</a></li>
+              <li><a href="#">Dental Implants</a></li>
+              <li><a href="#">Orthodontics</a></li>
+              <li><a href="#">Oral Surgery</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <div class="footer-links">
+            <h5>Newsletter</h5>
+            <p class="text-muted">Subscribe to our newsletter for dental tips and special offers.</p>
+            <form>
+              <div class="input-group mb-3">
+                <input type="email" class="form-control bg-dark border-dark text-white" placeholder="Your Email">
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Smart Dental Clinic. All Rights Reserved. Designed with <i class="fas fa-heart text-danger"></i> by Smart &copy;</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <div class="floating-buttons">
+    <a href="appointment.php" class="floating-btn btn-appointment">
+      <i class="fas fa-calendar-check"></i>
+    </a>
+    <a href="#" class="floating-btn btn-chat">
+      <i class="fas fa-comment-medical"></i>
+    </a>
+    <a href="tel:+255657748070" class="floating-btn btn-call">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    // Animation on scroll
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.fade-in');
+      elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        if (elementTop < window.innerHeight - elementVisible) {
+          el.style.opacity = "1";
+          el.style.transform = "translateY(0)";
+        }
+      });
+    }
+
+    // Initialize when page loads
+    window.addEventListener('load', () => {
+      animateOnScroll();
+      
+      // Animate stats counter
+      const counters = document.querySelectorAll('.stat-number');
+      const speed = 200;
+      
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-count');
+          const count = +counter.innerText;
+          const increment = target / speed;
+          
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target + '+';
+          }
+        };
+        
+        updateCount();
+      });
+    });
+
+    // Add scroll event listener
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.style.padding = '8px 0';
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+      } else {
+        navbar.style.padding = '15px 0';
+        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.05)';
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
